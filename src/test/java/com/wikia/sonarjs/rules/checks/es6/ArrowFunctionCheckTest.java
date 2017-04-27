@@ -19,6 +19,6 @@ public class ArrowFunctionCheckTest extends RuleTest {
 
 	@Test
 	public void arrowFunctionsAreNoncompliant() {
-		JavaScriptCheckVerifier.verify(new ArrowFunctionCheck(), new File("src/test/resources/arrowFunctionCheck.js"));
+		JavaScriptCheckVerifier.verify(new ArrowFunctionCheck(), new File("src/test/resources/ArrowFunctionCheck.js"));
 	}
 }
