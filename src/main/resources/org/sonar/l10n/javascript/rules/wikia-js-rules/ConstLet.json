@@ -1,0 +1,13 @@
+{
+	"title": "Variables cannot be declared with const or let in ES5",
+	"type": "BUG",
+	"status": "ready",
+	"remediation": {
+		"func": "Constant\/Issue",
+		"constantCost": "10min"
+	},
+	"tags": [
+		"es6"
+	],
+	"defaultSeverity": "Blocker"
+}

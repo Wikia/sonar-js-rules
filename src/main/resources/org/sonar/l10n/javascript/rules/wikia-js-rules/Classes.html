@@ -1,0 +1,22 @@
+<p>
+	Class declarations are an ES6 feature.
+	They are not part of the ES5 specification, and are unsupported by many browsers.
+	A function or an object literal should be used instead.
+</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+	class Clazz {
+		constructor() {
+			this.bar = 5;
+		}
+		foo() {}
+	}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+	function Clazz() {
+		this.bar = 5;
+	}
+
+	Clazz.prototype.foo = function() {};
+</pre>

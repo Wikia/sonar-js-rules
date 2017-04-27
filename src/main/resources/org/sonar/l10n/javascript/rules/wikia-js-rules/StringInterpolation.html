@@ -1,0 +1,15 @@
+<p>
+	Template string are an ES6 feature.
+	They are not part of the ES5 specification, and are unsupported by many browsers.
+	String concatenation should be used instead.
+</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+	let a = 8,
+		b = `a is ${a}`;
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+	var a = 8,
+		b = 'a is ' + a;
+</pre>
