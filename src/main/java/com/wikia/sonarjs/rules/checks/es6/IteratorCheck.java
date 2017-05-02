@@ -8,7 +8,7 @@ import org.sonar.plugins.javascript.api.visitors.SubscriptionVisitorCheck;
 
 import java.util.List;
 
-@Rule(key = "Iterators", tags = {"es6"})
+@Rule(key = "Iterators")
 public class IteratorCheck extends SubscriptionVisitorCheck {
 	final private static String MESSAGE = "Replace this for-of loop with a for-in or for/while loop or iteration function.";
 

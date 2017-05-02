@@ -6,7 +6,7 @@ import org.sonar.plugins.javascript.api.visitors.DoubleDispatchVisitorCheck;
 
 import javax.annotation.Nonnull;
 
-@Rule(key = "StringInterpolation", tags = {"es6"})
+@Rule(key = "StringInterpolation")
 public class StringInterpolationCheck extends DoubleDispatchVisitorCheck {
 	final private static String MESSAGE = "Replace this ES6 template string with string concatenation";
 

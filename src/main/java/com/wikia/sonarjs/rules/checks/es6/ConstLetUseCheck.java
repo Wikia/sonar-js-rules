@@ -8,7 +8,7 @@ import org.sonar.plugins.javascript.api.visitors.SubscriptionVisitorCheck;
 
 import java.util.List;
 
-@Rule(key = "ConstLet", tags = {"es6"})
+@Rule(key = "ConstLet")
 public class ConstLetUseCheck extends SubscriptionVisitorCheck {
 	final private static String MESSAGE = "Replace this ES6 variable declaration with var.";
 

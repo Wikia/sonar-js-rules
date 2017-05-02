@@ -6,7 +6,7 @@ import org.sonar.plugins.javascript.api.visitors.DoubleDispatchVisitorCheck;
 
 import javax.annotation.Nonnull;
 
-@Rule(key = "Classes", tags = {"es6"})
+@Rule(key = "Classes")
 public class ClassCheck extends DoubleDispatchVisitorCheck {
 	final private static String MESSAGE = "Replace this ES6 class with a function or object literal.";
 

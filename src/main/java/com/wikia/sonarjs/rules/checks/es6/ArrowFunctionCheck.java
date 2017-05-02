@@ -6,7 +6,7 @@ import org.sonar.plugins.javascript.api.visitors.DoubleDispatchVisitorCheck;
 
 import javax.annotation.Nonnull;
 
-@Rule(key = "ArrowFunctions", tags = {"es6"})
+@Rule(key = "ArrowFunctions")
 public class ArrowFunctionCheck extends DoubleDispatchVisitorCheck {
 	final private static String MESSAGE = "Convert this ES6 arrow function into a regular one.";
 

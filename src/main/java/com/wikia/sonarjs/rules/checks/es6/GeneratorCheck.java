@@ -6,7 +6,7 @@ import org.sonar.plugins.javascript.api.visitors.DoubleDispatchVisitorCheck;
 
 import javax.annotation.Nonnull;
 
-@Rule(key = "Generators", tags = {"es6"})
+@Rule(key = "Generators")
 public class GeneratorCheck extends DoubleDispatchVisitorCheck {
 	final private static String MESSAGE = "Refactor this code to not use ES6 generators.";
 

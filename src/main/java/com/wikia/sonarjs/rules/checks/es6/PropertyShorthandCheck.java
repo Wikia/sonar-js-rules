@@ -8,7 +8,7 @@ import org.sonar.plugins.javascript.api.visitors.DoubleDispatchVisitorCheck;
 
 import javax.annotation.Nonnull;
 
-@Rule(key = "PropertyShorthands", tags = {"es6"})
+@Rule(key = "PropertyShorthands")
 public class PropertyShorthandCheck extends DoubleDispatchVisitorCheck {
 	final private static String MESSAGE = "Replace this ES6 shorthand property declaration with a pair property.";
 

@@ -9,7 +9,7 @@ import org.sonar.plugins.javascript.api.visitors.SubscriptionVisitorCheck;
 
 import java.util.List;
 
-@Rule(key = "Literals", tags = {"es6"})
+@Rule(key = "Literals")
 public class LiteralsCheck extends SubscriptionVisitorCheck {
 	final private static String MESSAGE = "Replace this ES6 numeric literal with a decimal or hexadecimal number.";
 
