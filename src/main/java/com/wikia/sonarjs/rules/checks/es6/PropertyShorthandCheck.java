@@ -17,7 +17,7 @@ public class PropertyShorthandCheck extends DoubleDispatchVisitorCheck {
 		tree.properties().forEach(entry -> {
 			if (entry instanceof PairPropertyTree) {
 				PairPropertyTree pairPropertyTree = (PairPropertyTree) entry;
-				if (!(pairPropertyTree.key().is(Kind.STRING_LITERAL, Kind.IDENTIFIER_NAME))) {
+				if (!(pairPropertyTree.key().is(Kind.STRING_LITERAL, Kind.IDENTIFIER_REFERENCE))) {
 					addIssue(pairPropertyTree, MESSAGE);
 				}
 			} else {

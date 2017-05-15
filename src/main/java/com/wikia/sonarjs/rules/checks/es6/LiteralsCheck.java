@@ -1,21 +1,20 @@
 package com.wikia.sonarjs.rules.checks.es6;
 
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 import org.sonar.check.Rule;
 import org.sonar.plugins.javascript.api.tree.Tree;
 import org.sonar.plugins.javascript.api.tree.Tree.Kind;
 import org.sonar.plugins.javascript.api.tree.expression.LiteralTree;
 import org.sonar.plugins.javascript.api.visitors.SubscriptionVisitorCheck;
 
-import java.util.List;
-
 @Rule(key = "Literals")
 public class LiteralsCheck extends SubscriptionVisitorCheck {
 	final private static String MESSAGE = "Replace this ES6 numeric literal with a decimal or hexadecimal number.";
 
 	@Override
-	public List<Kind> nodesToVisit() {
-		return ImmutableList.of(Kind.NUMERIC_LITERAL);
+	public Set<Kind> nodesToVisit() {
+		return ImmutableSet.of(Kind.NUMERIC_LITERAL);
 	}
 
 	@Override

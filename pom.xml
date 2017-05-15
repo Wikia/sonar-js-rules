@@ -18,7 +18,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<javascript.version>2.19.0.3866</javascript.version>
+		<javascript.version>3.0.0.4962</javascript.version>
 		<sonar.version>6.0</sonar.version>
 	</properties>
 
