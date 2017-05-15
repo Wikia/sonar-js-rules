@@ -19,7 +19,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<javascript.version>3.0.0.4962</javascript.version>
-		<sonar.version>6.0</sonar.version>
+		<sonar.version>6.2</sonar.version>
 	</properties>
 
 	<dependencies>
@@ -65,7 +65,7 @@
 					<pluginOrganizationName>Wikia, Inc.</pluginOrganizationName>
 					<pluginOrganizationUrl>http://www.wikia.com</pluginOrganizationUrl>
 					<pluginSourcesUrl>https://github.com/Wikia/sonar-js-rules</pluginSourcesUrl>
-					<sonarQubeMinVersion>${sonar.version}</sonarQubeMinVersion>
+					<sonarQubeMinVersion>6.0</sonarQubeMinVersion>
 					<sonarLintSupported>true</sonarLintSupported>
 				</configuration>
 			</plugin>
