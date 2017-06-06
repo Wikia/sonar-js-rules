@@ -1,7 +1,9 @@
+[![Build Status](https://api.travis-ci.org/Wikia/sonar-js-rules.svg?branch=master)](https://travis-ci.org/Wikia/sonar-js-rules)
+
 Sonar JS rules
 ======
 Wikia's custom SonarQube rules for analyzing JavaScript files.
-[![Build Status](https://api.travis-ci.org/Wikia/sonar-js-rules.svg?branch=master)](https://travis-ci.org/Wikia/sonar-js-rules)
+
 ## Requirements
 - JDK 8
 
