@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rules.xsd">
-	<rule>
-		<key>ArrowFunctions</key>
+	<rule key="AmdExcludedFunctionParameterLimit">
+		<name>Functions that are not AMD module definitions should not have too many parameters</name>
+		<description><![CDATA[
+			<p>A long parameter list can indicate that a new structure should be created to wrap the numerous parameters or that the function is doing too many things.</p>
+			<p>Functions that are AMD modules are exempted from this rule as they use parameters to facilitate dependency injection.</p>
+			<h2>Noncompliant Code Example</h2>
+			<p>With a maximum number of 4 parameters:</p>
+			<pre>
+				function doSomething(param1, param2, param3, param4, param5) {
+				...
+				}
+
+				// AMD module definition
+				define(
+					'wikia.awesomeModule',
+					['jquery', 'mw', 'wikia.window', 'wikia.tracker', 'wikia.geo'],
+					function ($, mw, context, tracker, geo) {
+					...
+					}
+				);
+
+				// AMD require
+				require(
+					['jquery', 'mw', 'wikia.window', 'wikia.tracker', 'wikia.geo'],
+					function ($, mw, context, tracker, geo) {}
+				);
+			</pre>
+			<h2>Compliant Solution</h2>
+			<pre>
+				function doSomething(param1, param2, param3, param4) {
+				...
+				}
+			</pre>
+		]]></description>
+
+		<type>CODE_SMELL</type>
+		<severity>MAJOR</severity>
+		<tag>brain-overload</tag>
+		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
+		<remediationFunctionBaseEffort>20min</remediationFunctionBaseEffort>
+
+		<param key="maximumFunctionParameters">
+			<description>The maximum authorized number of parameters</description>
+			<defaultValue>4</defaultValue>
+		</param>
+	</rule>
+	<rule key="ArrowFunctions">
 		<name>Arrow functions cannot be used in ES5</name>
 		<description><![CDATA[
 			<p>
@@ -27,8 +72,7 @@
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
 		<remediationFunctionBaseEffort>10min</remediationFunctionBaseEffort>
 	</rule>
-	<rule>
-		<key>Classes</key>
+	<rule key="Classes">
 		<name>Classes cannot be used in ES5</name>
 		<description><![CDATA[
 			<p>
@@ -61,8 +105,7 @@
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
 		<remediationFunctionBaseEffort>10min</remediationFunctionBaseEffort>
 	</rule>
-	<rule>
-		<key>ConstLet</key>
+	<rule key="ConstLet">
 		<name>Variables cannot be declared with const or let in ES5</name>
 		<description><![CDATA[
 			<p>
@@ -94,8 +137,7 @@
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
 		<remediationFunctionBaseEffort>10min</remediationFunctionBaseEffort>
 	</rule>
-	<rule>
-		<key>Generators</key>
+	<rule key="Generators">
 		<name>Generators cannot be used in ES5</name>
 		<description><![CDATA[
 			<p>
@@ -111,7 +153,7 @@
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
 		<remediationFunctionBaseEffort>1h</remediationFunctionBaseEffort>
 	</rule>
-	<rule>
+	<rule key="Iterators">
 		<key>Iterators</key>
 		<name>Iterators cannot be used in ES5"</name>
 		<description><![CDATA[
@@ -145,8 +187,7 @@
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
 		<remediationFunctionBaseEffort>10min</remediationFunctionBaseEffort>
 	</rule>
-	<rule>
-		<key>Literals</key>
+	<rule key="Literals">
 		<name>Binary and octal numeric literals cannot be used in ES5</name>
 		<description><![CDATA[
 			<p>
@@ -174,8 +215,7 @@
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
 		<remediationFunctionBaseEffort>10min</remediationFunctionBaseEffort>
 	</rule>
-	<rule>
-		<key>PropertyShorthands</key>
+	<rule key="PropertyShorthands">
 		<name>Shorthand object properties cannot be used in ES5</name>
 		<description><![CDATA[
 			<p>
@@ -206,8 +246,7 @@
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
 		<remediationFunctionBaseEffort>10min</remediationFunctionBaseEffort>
 	</rule>
-	<rule>
-		<key>StringInterpolation</key>
+	<rule key="StringInterpolation">
 		<name>Template strings cannot be used in ES5</name>
 		<description><![CDATA[
 			<p>
