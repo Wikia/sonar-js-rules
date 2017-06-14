@@ -1,5 +1,6 @@
 package com.wikia.sonarjs.rules;
 
+import com.wikia.sonarjs.rules.checks.AmdExcludedFunctionParameterCountCheck;
 import com.wikia.sonarjs.rules.checks.es6.*;
 import com.wikia.sonarjs.rules.xml.RulesXmlInputStreamFactory;
 
@@ -24,7 +25,7 @@ public class JavaScriptRuleDefinitions extends CustomJavaScriptRulesDefinition {
 	}
 
 	@VisibleForTesting
-	public JavaScriptRuleDefinitions(RulesXmlInputStreamFactory factory) {
+	JavaScriptRuleDefinitions(RulesXmlInputStreamFactory factory) {
 		xmlInputStreamFactory = factory;
 	}
 
@@ -64,6 +65,7 @@ public class JavaScriptRuleDefinitions extends CustomJavaScriptRulesDefinition {
 	@Override
 	public Class[] checkClasses() {
 		return new Class[] {
+			AmdExcludedFunctionParameterCountCheck.class,
 			ArrowFunctionCheck.class,
 			ClassCheck.class,
 			ConstLetUseCheck.class,

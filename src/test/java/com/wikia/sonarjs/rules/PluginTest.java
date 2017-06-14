@@ -17,15 +17,15 @@ public class PluginTest {
 	@SuppressWarnings("unchecked")
 	public void pluginIsRegistered() {
 		JavaScriptRulesPlugin javaScriptRulesPlugin = new JavaScriptRulesPlugin();
-		Context context = getMockContext();
+		Context context = new Context(getMockSonarRuntime());
 
 		javaScriptRulesPlugin.define(context);
 
 		assertThat((List<Class>) context.getExtensions(), hasItem(JavaScriptRuleDefinitions.class));
 	}
 
-	private Context getMockContext() {
-		return new Context(new SonarRuntime() {
+	private SonarRuntime getMockSonarRuntime() {
+		return new SonarRuntime() {
 			@Override
 			public Version getApiVersion() {
 				return null;
@@ -40,6 +40,6 @@ public class PluginTest {
 			public SonarQubeSide getSonarQubeSide() {
 				return null;
 			}
-		});
+		};
 	}
 }
