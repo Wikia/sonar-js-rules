@@ -187,6 +187,38 @@
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
 		<remediationFunctionBaseEffort>10min</remediationFunctionBaseEffort>
 	</rule>
+	<rule key="JqueryProxyUsage">
+		<name>$.proxy polyfill should not be used</name>
+		<description><![CDATA[
+			<p>
+				<a href="https://api.jquery.com/jQuery.proxy/"><code>$.proxy</code></a> is a legacy polyfill for the native
+				<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind"><code>Function.prototype.bind</code></a> method.
+
+				Our supported browsers all support <code>Function.prototype.bind</code>, making the legacy polyfill redundant.
+			</p>
+			<h2>Noncompliant Code Example</h2>
+			<pre>
+			$.proxy(this.someMethod, this);
+			</pre>
+			<h2>Compliant Solution</h2>
+			<pre>
+			this.someMethod.bind(this);
+			</pre>
+			<h2>See</h2>
+			<ul>
+				<li>
+					<a href="https://github.com/Wikia/guidelines/blob/master/JavaScript/CodingConventions.md#setting-context-using-bind">Wikia JavaScript ES5 Coding Conventions</a>&nbsp;-&nbsp;Setting Context Using .bind()
+				</li>
+			</ul>
+		]]></description>
+
+		<type>CODE_SMELL</type>
+		<severity>MINOR</severity>
+		<tag>clumsy</tag>
+		<tag>convention</tag>
+		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
+		<remediationFunctionBaseEffort>10min</remediationFunctionBaseEffort>
+	</rule>
 	<rule key="Literals">
 		<name>Binary and octal numeric literals cannot be used in ES5</name>
 		<description><![CDATA[
