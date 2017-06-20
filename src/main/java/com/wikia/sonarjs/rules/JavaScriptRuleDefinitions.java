@@ -1,6 +1,6 @@
 package com.wikia.sonarjs.rules;
 
-import com.wikia.sonarjs.rules.checks.AmdExcludedFunctionParameterCountCheck;
+import com.wikia.sonarjs.rules.checks.*;
 import com.wikia.sonarjs.rules.checks.es6.*;
 import com.wikia.sonarjs.rules.xml.RulesXmlInputStreamFactory;
 
@@ -71,6 +71,7 @@ public class JavaScriptRuleDefinitions extends CustomJavaScriptRulesDefinition {
 			ConstLetUseCheck.class,
 			GeneratorCheck.class,
 			IteratorCheck.class,
+			JqueryProxyUsageCheck.class,
 			LiteralsCheck.class,
 			PropertyShorthandCheck.class,
 			StringInterpolationCheck.class
