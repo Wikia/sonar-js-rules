@@ -2,7 +2,7 @@ package com.wikia.sonarjs.rules;
 
 import com.wikia.sonarjs.rules.checks.*;
 import com.wikia.sonarjs.rules.checks.es6.*;
-import com.wikia.sonarjs.rules.xml.RulesXmlInputStreamFactory;
+import com.wikia.sonarjs.rules.xml.RulesXmlReaderFactory;
 
 import com.google.common.annotations.VisibleForTesting;
 import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
@@ -18,15 +18,15 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 public class JavaScriptRuleDefinitions extends CustomJavaScriptRulesDefinition {
-	private RulesXmlInputStreamFactory xmlInputStreamFactory;
+	private RulesXmlReaderFactory xmlReaderFactory;
 
 	public JavaScriptRuleDefinitions() {
-		xmlInputStreamFactory = new RulesXmlInputStreamFactory();
+		xmlReaderFactory = new RulesXmlReaderFactory();
 	}
 
 	@VisibleForTesting
-	JavaScriptRuleDefinitions(RulesXmlInputStreamFactory factory) {
-		xmlInputStreamFactory = factory;
+	JavaScriptRuleDefinitions(RulesXmlReaderFactory factory) {
+		xmlReaderFactory = factory;
 	}
 
 	@Override
@@ -42,15 +42,18 @@ public class JavaScriptRuleDefinitions extends CustomJavaScriptRulesDefinition {
 	@Override
 	public void define(Context context) {
 		try (
-			Reader xmlStreamValidationReader = new InputStreamReader(xmlInputStreamFactory.getRulesXmlStream());
-			Reader xmlStreamRulesDefinitionReader = new InputStreamReader(xmlInputStreamFactory.getRulesXmlStream());
-			Reader xsdStreamReader = new InputStreamReader(xmlInputStreamFactory.getRulesXsdStream())
+			Reader xmlStreamValidationReader = xmlReaderFactory.newRulesXmlReader();
+			Reader xmlStreamRulesDefinitionReader = xmlReaderFactory.newRulesXmlReader();
+			Reader xsdStreamReader = xmlReaderFactory.newRulesXsdReader()
 		) {
+			StreamSource xsdStreamSource = new StreamSource(xsdStreamReader);
+			StreamSource xmlStreamSource = new StreamSource(xmlStreamValidationReader);
+
 			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = schemaFactory.newSchema(new StreamSource(xsdStreamReader));
+			Schema schema = schemaFactory.newSchema(xsdStreamSource);
 			Validator validator = schema.newValidator();
 
-			validator.validate(new StreamSource(xmlStreamValidationReader));
+			validator.validate(xmlStreamSource);
 
 			NewRepository repo = context.createRepository(repositoryKey(), "js").setName(repositoryName());
 			RulesDefinitionXmlLoader xmlLoader = new RulesDefinitionXmlLoader();
